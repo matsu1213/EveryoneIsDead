@@ -1,0 +1,3 @@
+name: EveryoneIsDead
+version: '${project.version}'
+main: net.azisaba.everyoneisdead.EveryoneIsDead
