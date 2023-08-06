@@ -15,9 +15,9 @@ public class PacketHandler extends PacketAdapter {
 
     @Override
     public void onPacketSending(PacketEvent e){
-        final PacketContainer packet = e.getPacket();
+        final PacketContainer packet = e.getPacket().deepClone();
         final Entity entity = packet.getEntityModifier(e).read(0);
-        if(!(entity instanceof LivingEntity) || entity == e.getPlayer()){
+        if(!(entity instanceof LivingEntity) || packet.getIntegers().read(0) == e.getPlayer().getEntityId()){
             return;
         }
         final WrappedDataWatcher dataWatcher = WrappedDataWatcher.getEntityWatcher(entity).deepClone();
